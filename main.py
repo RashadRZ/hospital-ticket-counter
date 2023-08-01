@@ -1,4 +1,5 @@
 from tkinter import *
+from PIL import ImageTk, Image
 
 # window setup
 root = Tk()
@@ -19,21 +20,44 @@ root.resizable(False, False)
 root.configure(bg='white')
 
 # UI component
-header = Label(root, text="HEALTH CARE", font=('Arial', 32, 'bold'),  height=10)
+top_frame = Frame(root, bg='white')
+header_label = Label(top_frame, text='HEALTH CARE', font=('Arial', 28, 'bold'), bg='white')
+my_image = ImageTk.PhotoImage(Image.open('images/hospital.png'))
+header_image = Label(top_frame, image=my_image, bg='white')
 
-counter1_label = Label(root, text="TICKET COUNTER 1", font=('Arial', 32, 'bold'),  height=2)
-counter2_label = Label(root, text="TICKET COUNTER 2", font=('Arial', 32, 'bold'),  height=2)
-next_queue_label = Label(root, text="NEXT", font=('Arial', 32, 'bold'),  height=2)
+middle_frame = Frame(root, bg='white')
+counter1_label = Label(middle_frame, text='TICKET COUNTER 1', font=('Arial', 18, 'bold'), bg='white', height=2)
+counter1 = Button(middle_frame, text='B001', font=('Arial', 26, 'bold'), bg='black', fg='white', borderwidth=0, width=16, height=4)
 
-counter1 = Button(root, text="B001", font=('Arial', 32, 'bold'),  width=50, height=10)
-counter2 = Button(root, text="B002", font=('Arial', 32, 'bold'),  width=50, height=10)
-next_queue = Button(root, text="A001", font=('Arial', 32, 'bold'),  width=50, height=10)
+counter2_label = Label(middle_frame, text='TICKET COUNTER 2', font=('Arial', 18, 'bold'), bg='white', height=2)
+counter2 = Button(middle_frame, text='B002', font=('Arial', 26, 'bold'), bg='black', fg='white', borderwidth=0, width=16, height=4)
 
-priority = Button(root, text="PRIORITY", font=('Arial', 32, 'bold'),  width=30, height=3)
-regular = Button(root, text="REGULAR", font=('Arial', 32, 'bold'),  width=30, height=3)
+next_queue_label = Label(middle_frame, text='NEXT', font=('Arial', 18, 'bold'), bg='white', height=2)
+next_queue = Button(middle_frame, text='A001', font=('Arial', 26, 'bold'), bg='white', fg='black', highlightthickness=1, highlightbackground='black', highlightcolor='black', borderwidth=0, width=16, height=4, default='active')
+next_queue.configure()
+
+bottom_frame = Frame(root, bg='white')
+priority = Button(bottom_frame, text='PRIORITY', font=('Arial', 18, 'bold'), bg='#E20016', fg='white', borderwidth=0, width=11)
+regular = Button(bottom_frame, text='REGULAR', font=('Arial', 18, 'bold'), bg='white', fg='black', highlightthickness=1, highlightbackground='#E20016', highlightcolor='#E20016', borderwidth=0, width=11, default='active')
 
 # UI positioning
+top_frame.pack(pady=50)
+header_label.grid(row=0, column=0)
+header_image.grid(row=0, column=1)
 
+middle_frame.pack(pady=50)
+counter1_label.grid(row=0, column=0)
+counter1.grid(row=1, column=0, padx=30)
+
+counter2_label.grid(row=0, column=1)
+counter2.grid(row=1, column=1, padx=30)
+
+next_queue_label.grid(row=0, column=2)
+next_queue.grid(row=1, column=2, padx=30)
+
+bottom_frame.pack(pady=50)
+priority.grid(row=0, column=0, padx=10, pady=10)
+regular.grid(row=0, column=1, padx=10, pady=10)
 
 # run
 root.mainloop()
