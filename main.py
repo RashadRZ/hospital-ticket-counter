@@ -1,5 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
+from playsound import playsound
 
 # Queue
 queue = []
@@ -11,6 +12,11 @@ def call_counter1():
     if len(queue) != 0:
         call = queue.pop(0)
         counter1.configure(text=call)
+        playsound('sounds/queue_number.mp3')
+        playsound(f'sounds/{call[0]}.mp3')
+        playsound(f'sounds/{call[1]}.mp3')
+        playsound(f'sounds/{call[2]}.mp3')
+        playsound('sounds/to_counter_one.mp3')
         show_next()
 
 
@@ -18,6 +24,11 @@ def call_counter2():
     if len(queue) != 0:
         call = queue.pop(0)
         counter2.configure(text=call)
+        playsound('sounds/queue_number.mp3')
+        playsound(f'sounds/{call[0]}.mp3')
+        playsound(f'sounds/{call[1]}.mp3')
+        playsound(f'sounds/{call[2]}.mp3')
+        playsound('sounds/to_counter_two.mp3')
         show_next()
 
 
